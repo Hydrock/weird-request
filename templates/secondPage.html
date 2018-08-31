@@ -16,6 +16,41 @@
     <button id="redirectButton">Ajax Get Redirect GET</button>
     <button id="redirectButtonPOST">Ajax Get Redirect POST</button>
 
+    <hr>
+
+    <form action="/redirectToMainPage" method="POST" style="border: 1px solid black;">
+        <input type="text" name="text" value="text"/>
+        <input type="file" name="file">
+        <button type="submit">submit</button>
+    </form>
+
+    <button id="sendJSForm">
+        send virteal JS Form Ajax
+    </button>
+    <script>
+        const sendJSFormButton = document.getElementById('sendJSForm');
+        sendJSFormButton.addEventListener('click', (e) => {
+            e.preventDefault();
+
+            var formElement = document.querySelector("form");
+
+            let formData = new FormData(formElement);
+            //formData.append('text', 'text');
+
+            fetch('/redirectToMainPage', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
+                    "Cache-Control": "max-age=0"
+                }
+            });
+        })
+    </script>
+
+    <hr>
+
     <script>
         const button = document.getElementById('redirectButton');
         button.addEventListener('click', (e) => {

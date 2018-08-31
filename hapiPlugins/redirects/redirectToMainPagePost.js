@@ -8,6 +8,8 @@ exports.plugin = {
             method: 'POST',
             path: '/redirectToMainPage',
             handler: function (request, h) {
+                console.log(request.payload)
+                console.log(request)
                 const response = h.response('Hi, YLD!');
                 response.code(302);
                 response.header('Content-Type', 'text/plain');
