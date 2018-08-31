@@ -2,6 +2,7 @@
 
 const myPlugin = require('./hapiPlugins/mainPage.js');
 const routeGetSecondPage = require('./hapiPlugins/secondPage.js');
+const redirectToMainPage = require('./hapiPlugins/redirects/redirectToMainPage.js');
 
 const Path = require('path');
 const Hapi = require('hapi');
@@ -13,7 +14,7 @@ const server = Hapi.server({
 });
 
 const init = async () => {
-    await server.register([myPlugin, require('vision'), routeGetSecondPage]);
+    await server.register([myPlugin, require('vision'), routeGetSecondPage, redirectToMainPage]);
 
     server.views({
         engines: {
