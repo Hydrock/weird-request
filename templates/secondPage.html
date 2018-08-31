@@ -12,5 +12,26 @@
     </h1>
     <a href="/">to main page</a>
     <a href="/redirectToMainPage">redirect to main page</a>
+    <hr>
+    <button id="redirectButton">Ajax Get Redirect GET</button>
+    <button id="redirectButtonPOST">Ajax Get Redirect POST</button>
+
+    <script>
+        const button = document.getElementById('redirectButton');
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+
+            fetch('/redirectToMainPage');
+        })
+
+        const buttonPost = document.getElementById('redirectButtonPOST');
+        buttonPost.addEventListener('click', (e) => {
+            e.preventDefault();
+
+            fetch('/redirectToMainPage', {
+                method: 'POST'
+            });
+        })
+    </script>
 </body>
 </html>
